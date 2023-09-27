@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en" class="h-100">
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static '/css/market.css' %}">
+<head>
+  <meta charset="utf-8">
+    <title>Marketplace</title>
+</head>
+<body class="body">
+<div class="title">New Market</div>
+<p></p>
+<div>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<form action="" method="GET" enctype="multipart/form-data">
+{% csrf_token %}
+  <input name="text" type="search" autocomplete="off" value={{ data.find }}>
+  <i class="fa fa-search"></i>
+</form>
+</div>
+<div class="cards">
+
+    {% for category in data.categorys %}
+
+         <!-- Карточка товара -->
+<div class="card">
+  <!-- Верхняя часть -->
+  <div class="card__top">
+    <!-- Изображение-ссылка -->
+    <a href="{% url 'category_url' category.id %}" class="card__image">
+
+        <img
+        src="{% static category.img %}"
+        alt="Error!"
+      />
+
+    </a>
+  </div>
+  <!-- Нижняя часть -->
+    <!-- Название товара -->
+    <div class="card__title">{{ category.title }}</div>
+
+</div>
+    {% endfor %}
+</div>
+
+
+
+
+
+</body>
+</html>
