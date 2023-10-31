@@ -14,7 +14,7 @@
 .card {
   background: khaki;
   width: 150px;
-  min-height: 150px;
+  height: 170px;
   box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column; /* Размещаем элементы в колонку */
@@ -136,5 +136,3 @@ form:hover .fa{
     background: #ee670d;
     color: white;
 }
-
-

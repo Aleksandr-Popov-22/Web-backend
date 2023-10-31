@@ -4,18 +4,22 @@
 <link rel="stylesheet" type="text/css" href="{% static '/css/categ.css' %}">
 <head>
     <meta charset="UTF-8">
-    <title>Описание категории</title>
+    <title>{{ data.categorys.name_category }}</title>
 </head>
 <body class="body">
 
-<div class="title_app">Информация</div>
+<div class="title_app">Категория "{{ data.categorys.name_category }}"</div>
 
 <div class="title_cat">
 
-    {{data.info}}
+    {{data.categorys.info}}
 
 </div>
-
+<div class="but">
+    <form action="" method="GET">
+{% csrf_token %}
+        <input name="delCategory" type="submit" class="button_del" value="Удалить категорию"></form>
+</div>
 
 <!--
 <div class="cards_app">
