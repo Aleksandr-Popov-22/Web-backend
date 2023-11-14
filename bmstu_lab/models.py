@@ -4,8 +4,8 @@ from django.db import models
 class Category(models.Model):
     name_category = models.CharField(max_length=30, blank=True, null=True)
     status = models.CharField(max_length=30, blank=True, null=True)
-    image = models.CharField(max_length=30, blank=True, null=True)
     info = models.CharField(max_length=100, blank=True, null=True)
+    image = models.BinaryField(blank=True, null=True)
 
     class Meta:
         managed = True
