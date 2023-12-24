@@ -9,7 +9,7 @@ class Category(models.Model):
     name_category = models.CharField(max_length=30, blank=True, null=True)
     status = models.CharField(max_length=30, blank=True, null=True)
     info = models.CharField(max_length=100, blank=True, null=True)
-    image = models.BinaryField(blank=True, null=True)
+    image = models.CharField(max_length=120, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -30,11 +30,11 @@ class RequestCategory(models.Model):
 
 class SellRequest(models.Model):
 
-    date_creation = models.DateTimeField(default=datetime.now(tz=timezone.utc), blank=True, null=True)
+    date_creation = models.DateTimeField(blank=True, null=True)
     date_formation = models.DateTimeField(blank=True, null=True)
     date_completion = models.DateTimeField(blank=True, null=True)
     status = models.CharField(default='Черновик', max_length=30, blank=True, null=True)
-    id_creator = models.ForeignKey('Users', models.DO_NOTHING, db_column='id_creator', blank=True, null=True)
+    id_creator = models.ForeignKey('Users', models.DO_NOTHING, db_column='id_creator', related_name='id_creator_set', blank=True, null=True)
     id_moderator = models.ForeignKey('Users', models.DO_NOTHING, db_column='id_moderator', related_name='sellrequest_id_moderator_set', blank=True, null=True)
 
     class Meta:
