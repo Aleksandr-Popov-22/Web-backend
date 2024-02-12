@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-y$a!t1h+@e&wu)3tc^j+bjbip$($-r8^h!d)8_*+9jl)lej32w
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = ['192.168.0.106']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -38,7 +39,23 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Server_API.apps.ServerApiConfig',
+    'storages',
+    'boto3',
+    'drf_yasg',
+    'rest_framework',
+    'corsheaders'
 ]
+
+SWAGGER_SETTINGS = {
+   'USE_SESSION_AUTH': False
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ]
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -48,6 +65,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware"
 ]
 
 ROOT_URLCONF = 'lab3.urls'
@@ -86,12 +105,14 @@ DATABASES = {
     }
 }
 
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+#STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 AWS_STORAGE_BUCKET_NAME = 'server-api'     # Бакет должен уже быть создан
 AWS_ACCESS_KEY_ID = 'minio'
 AWS_SECRET_ACCESS_KEY = 'minio124'
-AWS_S3_ENDPOINT_URL = 'http://localhost:9000'
+#AWS_S3_ENDPOINT_URL = 'http://192.168.0.106:9000'
+AWS_S3_ENDPOINT_URL = 'http://127.0.0.1:9000/'
 
 
 # Password validation
@@ -111,7 +132,16 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
+CORS_ALLOWED_METHODS = [
+    "GET",
+    "POST",
+    "PUT",
+    "PATCH",
+    "GET",
+    "DELETE",
+]
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
@@ -134,3 +164,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = "Server_API.CustomUser"
+
+REDIS_HOST = 'localhost'
+REDIS_PORT = 6379

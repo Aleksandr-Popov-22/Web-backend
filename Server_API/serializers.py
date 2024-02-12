@@ -1,25 +1,22 @@
-from Server_API.models import Category, SellRequest, RequestCategory, Users
+from Server_API.models import Category, SellRequest, RequestCategory, CustomUser
 from rest_framework import serializers
 
-
-
-class UsersSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
+    is_staff = serializers.BooleanField(default=False, required=False)
+    is_superuser = serializers.BooleanField(default=False, required=False)
     class Meta:
-        # Модель, которую мы сериализуем
-        model = Users
-        # Поля, которые мы сериализуем
-        fields = ["name_user"]
-
+        model = CustomUser
+        fields = ['email', 'password', 'is_staff', 'is_superuser']
 
 class SellRequestSerializer(serializers.ModelSerializer):
-    creator = UsersSerializer(source='id_creator', read_only=True)
-    moderator = UsersSerializer(source='id_moderator', read_only=True)
+    creator = UserSerializer(source='id_creator', read_only=True)
+    moderator = UserSerializer(source='id_moderator', read_only=True)
     class Meta:
         # Модель, которую мы сериализуем
         model = SellRequest
         # Поля, которые мы сериализуем
-        #fields = "__all__"
-        fields = ["id", "date_creation", "date_formation", "date_completion", "status", "creator", "moderator"]
+        fields = "__all__"
+        #fields = ["id", "date_creation", "date_formation", "date_completion", "status", "creator", "moderator", "status_priority"]
 
 class RequestCategorySerializer(serializers.ModelSerializer):
 
@@ -37,4 +34,4 @@ class CategorySerializer(serializers.ModelSerializer):
         model = Category
         # Поля, которые мы сериализуем
         fields = "__all__"
-        #fields = ["id", "name_category", "status", "info", "image"]
+        #fields = ["id", "name_category", "info", "image"]
