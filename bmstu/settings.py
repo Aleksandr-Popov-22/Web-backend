@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'bmstu.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Marketplace',
+        'NAME': 'MarketDB',
         'USER': 'postgres',
         'PASSWORD': 'alex22',
         'HOST': 'localhost',

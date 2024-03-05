@@ -13,8 +13,8 @@
 
 .card {
   background: khaki;
-  width: 160px;
-  height: 205px;
+  width: 170px;
+  height: 235px;
   box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column; /* Размещаем элементы в колонку */
@@ -49,7 +49,7 @@
 
 
 .card__top {
-  flex: 0 0 100px; /* Задаем высоту 220px, запрещаем расширение и сужение по высоте */
+  flex: 0 0 150px; /* Задаем высоту 220px, запрещаем расширение и сужение по высоте */
   position: relative;
   overflow: hidden; /* Скрываем, что выходит за пределы */
 }

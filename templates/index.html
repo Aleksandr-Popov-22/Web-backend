@@ -15,24 +15,24 @@
 
     <form action="" method="GET" enctype="multipart/form-data" class="form_get">
 {% csrf_token %}
-  <input name="sendCategory" class="input_get" type="search" autocomplete="off" value={{ data.find }}>
+  <input name="category" class="input_get" type="search" autocomplete="off" value={{ data.find }}>
   <i class="fa fa-search"></i>
 </form>
 </div>
 
 
 <div class="cards">
-    {% for category, img in data.categorys %}
+    {% for category in data.categorys %}
 
          <!-- Карточка товара -->
 <div class="card">
   <!-- Верхняя часть -->
   <div class="card__top">
     <!-- Изображение-ссылка -->
-    <a href="{% url 'category_url' category.id %}" class="card__image">
+    <a href="{% url 'category_id' category.id %}" class="card__image">
 
 
-        <img src="data:image/jpeg;base64,{{ img }}"/>
+        <img src="{{ category.image }}"/>
 
     </a>
   </div>
@@ -52,6 +52,29 @@
 </div>
 
 {% endfor %}
+
+<div class="cards">
+
+         <!-- Карточка корзины -->
+<div class="card">
+  <!-- Верхняя часть -->
+  <div class="card__top">
+    <!-- Изображение-ссылка -->
+    <a href="{% url 'request' %}" class="card__image">
+
+
+        <img src="{% static 'image/bucket.jpg' %}" alt="Error">
+
+    </a>
+  </div>
+  <!-- Нижняя часть -->
+    <!-- Название товара -->
+    <div class="card__title">Корзина: {{ data.len }}</div>
+
+
+</div>
+</div>
+
 </div>
 
 

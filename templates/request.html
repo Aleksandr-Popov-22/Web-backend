@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static '/css/market.css' %}">
+<head>
+    <meta charset="UTF-8">
+    <title>Текущая заявка</title>
+</head>
+<body class="body">
+<div class="title">Корзина</div>
+<p></p>
+<div class="cards">
+    {% for cat in data.categorys %}
+
+         <!-- Карточка товара -->
+<div class="card">
+  <!-- Верхняя часть -->
+  <div class="card__top">
+      <div class="card__image">
+
+        <img src="{{ cat.image }}" alt="Error" class="card__image">
+
+      </div>
+
+  </div>
+  <!-- Нижняя часть -->
+    <!-- Название товара -->
+    <div class="card__title">{{ cat.name_category }}</div>
+
+
+</div>
+    {% endfor %}
+
+
+
+</div>
+
+
+
+</body>
+</html>

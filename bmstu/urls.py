@@ -20,7 +20,8 @@ from bmstu_lab import views
 
 urlpatterns = [
     path('admin/',admin.site.urls),
-    path('category/<int:id>/', views.GetCategory, name='category_url'),
-    path('', views.SendCategory, name='sendCategory'),
-    path('delCategory/<int:id>', views.DelCategory, name='delCategory')
+    path('category/<int:id>/', views.GetCategoryId, name='category_id'),
+    path('', views.GetCategorys, name='categorys'),
+    path('delCategory/<int:id>', views.DelCategory, name='delCategory'),
+    path('request', views.GetRequest, name='request'),
 ]
