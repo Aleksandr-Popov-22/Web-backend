@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static '/css/market.css' %}">
+<head>
+    <meta charset="UTF-8">
+    <title>Текущая заявка</title>
+</head>
+<body class="body">
+<div class="title">Корзина</div>
+<p></p>
+<div class="cards">
+    {% for req in data.request %}
+
+         <!-- Карточка товара -->
+<div class="card">
+  <!-- Верхняя часть -->
+  <div class="card__top">
+    <!-- Изображение-ссылка -->
+
+        <img src="{{ req.img }}" alt="Error" class="card__image">
+
+  </div>
+  <!-- Нижняя часть -->
+    <!-- Название товара -->
+    <div class="card__title">{{ req.title }}</div>
+
+
+</div>
+    {% endfor %}
+</div>
+
+<!--
+<div class="cards_app">
+
+
+ Карточка заявки
+<div class="card_app">
+  Верхняя часть
+  <div class="card_top_app">
+    Изображение-ссылка товара
+    <a href="#" class="card_image_app">
+      <img
+        src="{% static app.img %}"
+        alt="Error!"
+      />
+    </a>
+  </div>
+<div class="card_bottom_app">
+  Нижняя часть
+
+     Ссылка-название товара
+    <div class="card_title_app">
+        <div>{{ app.title }}</div>
+        <div>Цена: {{ app.price }}</div>
+        <div>Статус: {{ app.status }}</div>
+        <div>Описание: {{ app.info }}</div>
+    </div>
+
+</div>
+
+    <div class="card_bottom_app">
+     Кнопка добавить в корзину
+    <button class="card_add_app">Принять</button>
+    <button class="card_add_app">Отклонить</button>
+    <button class="card_add_app">Удалить</button>
+  </div>
+
+</div>
+
+</div>-->
+
+</body>
+</html>
